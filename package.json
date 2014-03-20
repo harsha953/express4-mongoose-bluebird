@@ -11,6 +11,10 @@
   "dependencies": {
     "bluebird": "~1.1.1",
     "mongoose": "~3.8.8",
-    "express": "~4"
+    "express": "~4",
+    "morgan": "~1.0.0",
+    "body-parser": "~1.0.0",
+    "errorhandler": "~1.0.0",
+    "method-override": "~1.0.0"
   }
 }

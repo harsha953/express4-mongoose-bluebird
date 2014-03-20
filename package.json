@@ -1,0 +1,16 @@
+{
+  "name": "bluebird-mongoose-test",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Jeduan Cornejo <jeduan@gmail.com> (http://jeduan.com/)",
+  "license": "ISC",
+  "dependencies": {
+    "bluebird": "~1.1.1",
+    "mongoose": "~3.8.8",
+    "express": "~4"
+  }
+}

@@ -15,17 +15,15 @@ if (env === 'development') {
 app.use(require('body-parser')())
 app.use(require('method-override')())
 
-app.route('/').get(function (req, res) {
-  res.json({hello: 'world'})
-})
+app.use('/post', require('./routes'))
 
-app.use(function handleNotFound(req, res, next){
+app.use(function handleNotFound(req, res){
   res.status(404);
 
-  if (req.accepts('html')) {
-    res.render('404', { url: req.url });
-    return;
-  }
+  // if (req.accepts('html')) {
+  //   res.render('404', { url: req.url });
+  //   return;
+  // }
 
   if (req.accepts('json')) {
     res.send({ error: 'Not found' });
@@ -41,6 +39,10 @@ if (env === 'development') {
 } else {
   app.use(function logErrors(err, req, res, next){
     if (err.status === 404) {
+      return next(err)
+    }
+
+    if (err.logError === false) {
       return next(err)
     }
 

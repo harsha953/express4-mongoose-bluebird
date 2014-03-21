@@ -4,6 +4,12 @@ express4-bluebird-mongoose
 This is just a test that combines the upcoming express version and
 a couple of things I wanted to try for a while.
 
+Express4
+------
+
+I was curious about some of the new features of express4. This uses the new
+`express.Router` API and obviously the now not-included-by-default middlewares
+
 Better error handling in production
 -----
 

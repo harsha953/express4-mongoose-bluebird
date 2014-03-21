@@ -3,9 +3,10 @@ var express = require('express'),
     ValidationError = require('mongoose/lib/error/validation')
 
 var postRouter = express.Router()
+var objectIdRegex = /\d{8}|\d{16}/
 
 postRouter.param('post', function(req, res, next, id) {
-  if (! /\d{8}|\d{16}/.test(String(id))) {
+  if (! objectIdRegex.test(String(id))) {
     return next('route')
   }
 
@@ -20,7 +21,7 @@ postRouter.param('post', function(req, res, next, id) {
   }).catch(next)
 })
 
-postRouter.get('/', function(req, res) {
+postRouter.get('/', function(req, res, next) {
   Post.findAsync().then(function(foundItems){
     res.send(foundItems)
   }).catch(next)
@@ -54,7 +55,7 @@ postRouter.put('/:post', function(req, res, next) {
 
 postRouter.delete('/:postId', function(req, res, next) {
   var postId = String(req.params.postId)
-  if (! /\d{8}|\d{16}/.test(postId)) {
+  if (! objectIdRegex.test(postId)) {
     return next('route')
   }
 

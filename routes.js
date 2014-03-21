@@ -23,7 +23,7 @@ postRouter.param('post', function(req, res, next, id) {
 postRouter.get('/', function(req, res) {
   Post.findAsync().then(function(foundItems){
     res.send(foundItems)
-  })
+  }).catch(next)
 })
 
 postRouter.post('/', function(req, res, next) {
@@ -33,8 +33,7 @@ postRouter.post('/', function(req, res, next) {
     err.logError = false
     err.productionMessage = true
     throw err
-  })
-  .catch(next)
+  }).catch(next)
 })
 
 postRouter.get('/:post', function(req, res) {
